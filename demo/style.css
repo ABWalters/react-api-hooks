@@ -1,0 +1,58 @@
+/*@import url('https://rsms.me/inter/inter.css');*/
+
+.book-list-outer {
+  position: relative;
+  min-height: 376px;
+}
+
+.book-list {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.book-list-item {
+  border-bottom: 1px solid #eee;
+  display: flex;
+  height: 70px;
+  line-height: 70px;
+}
+
+.book-list-item img {
+  height: 100%;
+}
+
+.book-list-item > .image {
+  flex-grow: 0;
+  width: 70px;
+}
+
+.book-list-item > .text {
+  flex-grow: 1;
+}
+
+.paginator{
+  display: flex;
+  padding: 15px ;
+}
+
+.paginator > .center{
+  flex-grow: 1;
+}
+
+.example-separator {
+  max-width: 400px;
+  margin: 50px auto;
+}
+
+html,
+body {
+  background-color: #f8f8f8;
+}
+
+/*html {*/
+/*font-family: 'Inter', sans-serif;*/
+/*}*/
+/*@supports (font-variation-settings: normal) {*/
+/*html {*/
+/*font-family: 'Inter var', sans-serif;*/
+/*}*/
+/*}*/
