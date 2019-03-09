@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "parcel demo/index.html",
-    "build": "parcel build demo/index.html",
+    "build": "parcel build demo/index.html --out-dir=docs --public-url https://abwalters.github.io/react-api-hooks/",
     "test": "npm test"
   },
   "repository": {
