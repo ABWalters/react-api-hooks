@@ -1,1 +1,2 @@
-# react-api-hooks
+# React API Hooks
+React hooks for working with APIs.
