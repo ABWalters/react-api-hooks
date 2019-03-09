@@ -6,7 +6,7 @@ import hash from 'hash-object';
  * @param {string} url - URL that the API call is made to.
  * @param {object} config - Axios config object passed to the axios.request method.
  */
-function useAPI(url, config) {
+function useAPI(url, config={}) {
   const [state, setState] = useState({
     response: undefined,
     error: undefined,
