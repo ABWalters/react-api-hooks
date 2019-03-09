@@ -2,7 +2,7 @@
 
 React hooks for easily adding API calls to a functional component.
 
-Uses the [axios](https://github.com/axios/axios) for making all requests.
+Uses [axios](https://github.com/axios/axios) for making all requests.
 
 Includes two hooks that can be used:
 
