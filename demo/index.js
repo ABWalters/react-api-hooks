@@ -1,34 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import BaseLayout from './layout/BaseLayout';
-import BasicUsageExample from './examples/BasicUsageExample';
 import 'prismjs';
 import 'prismjs/components/prism-jsx.min';
 import 'prismjs/themes/prism.css';
 
-import ComponentExample from './components/Example';
-import AdvancedUsageExample from './examples/AdvancedExample';
+// import hljs from 'highlight.js/lib/highlight';
+// import 'highlight.js/styles/github.css';
+// import javascript from 'highlight.js/lib/languages/javascript';
+// hljs.registerLanguage('javascript', javascript);
+// hljs.initHighlightingOnLoad();
+
 import './style.css';
-import basicExampleSource from './examples/basicExampleSource';
-import advancedExampleSource from './examples/advancedExampleSource';
+import TabbedWindow from './layout/TabbedWindow';
+import DemoView from './views/DemoView';
+import UsageView from './views/UsageView';
+import ReferenceView from './views/ReferenceView';
 
 const App = () => {
   return (
-    <BaseLayout>
-      <ComponentExample
-        description="Basic usage of useAPI hook."
-        componentSource={basicExampleSource}
-        component={BasicUsageExample}
-        title="Basic Usage"
-      />
-      <hr className="example-separator" />
-      <ComponentExample
-        description="Advanced usage of useAPI together with useParams hook."
-        componentSource={advancedExampleSource}
-        component={AdvancedUsageExample}
-        title="Advanced Usage"
-      />
-    </BaseLayout>
+    <div>
+      <BaseLayout>
+        <h1 className="title-main">React API Hooks</h1>
+        <p className="description-main">
+          React hooks for fetching and filtering data from API endpoints.
+        </p>
+        <TabbedWindow tabNames={['Demo', 'Usage', 'Reference']}>
+          <DemoView />
+          <UsageView />
+          <ReferenceView />
+        </TabbedWindow>
+      </BaseLayout>
+    </div>
   );
 };
 

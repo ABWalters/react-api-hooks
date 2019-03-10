@@ -12,7 +12,9 @@ const BookList = ({ data, isStale }) => {
               {imageLinks && <img src={imageLinks.smallThumbnail} alt="book thumbnail" />}
             </div>
             <div className="text">
-              {`${volumeInfo.title} - ${(volumeInfo.authors || []).join(', ')}`}
+              <span>{volumeInfo.title}</span>
+              <br />
+              <small>{(volumeInfo.authors || []).join(', ')}</small>
             </div>
           </div>
         );

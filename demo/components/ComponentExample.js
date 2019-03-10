@@ -7,12 +7,10 @@ const h3Style = { marginBottom: 20 };
 const ComponentExample = ({ title, description, component, componentSource }) => {
   return (
     <div>
-      <h1>{title}</h1>
+      <h3>{title}</h3>
       <p style={{ color: '#6b6b6b' }}>{description}</p>
-      <h3 style={h3Style}>Component Example</h3>
       {component()}
       <hr style={{ width: 200, margin: '20 auto' }} />
-      <h3 style={h3Style}>Component Code</h3>
       <pre>
         <PrismCode className="language-jsx">{componentSource}</PrismCode>
       </pre>

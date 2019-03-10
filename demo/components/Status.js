@@ -23,9 +23,5 @@ export const Loading = () => {
 };
 
 export const Error = () => {
-  return (
-    <div style={statusStyle}>
-      <h5>Loading...</h5>
-    </div>
-  );
+  return <div>An error occurred.</div>;
 };

@@ -4,10 +4,10 @@ import BooksList from '../components/BookList';
 import { Error, Loading } from '../components/Status';
 import { API_URL } from '../constants';
 
-const BasicUsageExample = () => {
+const SimpleAPIExample = () => {
   const { data, error, isLoading } = useAPI(API_URL, {
     params: {
-      q: 'intitle:guide+to+the+galaxy',
+      q: 'intitle:guide to the galaxy',
       maxResults: 5
     }
   });
@@ -21,4 +21,4 @@ const BasicUsageExample = () => {
   );
 };
 
-export default BasicUsageExample;
+export default SimpleAPIExample;

@@ -1,8 +1,8 @@
-const basicExampleSource = `
-const BasicUsageExample = () => {
+const simpleAPIExampleSource = `
+const SimpleAPIExample = () => {
   const { data, error, isLoading } = useAPI(API_URL, {
     params: {
-      q: 'intitle:guide+to+the+galaxy',
+      q: 'intitle:guide to the galaxy',
       maxResults: 5
     }
   });
@@ -17,4 +17,4 @@ const BasicUsageExample = () => {
 };
 `;
 
-export default basicExampleSource;
+export default simpleAPIExampleSource;
