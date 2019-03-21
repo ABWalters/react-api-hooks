@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { debounce } from 'lodash';
+import debounce from 'lodash.debounce';
 
 export default function useParams(initialParams = {}, debounceDelay=500) {
   const [params, setParams] = useState(initialParams);
