@@ -74,17 +74,10 @@ const Component = () => {
 useAPI(url, (config = {}));
 ```
 
-##### url: string
-
-`required`
-
-The URL that the API call is made to.
-
-##### config: object
-
-`default: {}`
-
-Axios config object passed directly to the `axios.request` method.
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| url   | string |       | The URL that the API call is made to.|
+| config | object | {}   | Axios config object, passed directly to the `axios.request` method.|
 
 #### Returns
 
