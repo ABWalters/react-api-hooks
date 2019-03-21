@@ -1,0 +1,32 @@
+{
+  "name": "react-api-hooks-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "next",
+    "build": "next build",
+    "production": "next start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "next": "^8.0.3",
+    "prismjs": "^1.15.0",
+    "query-string": "^6.4.0",
+    "react": "^16.8.4",
+    "react-api-hooks": "0.0.7",
+    "react-dom": "^16.8.4",
+    "react-prism": "^4.3.2",
+    "spectre-css": "^1.0.0",
+    "spectre.css": "^0.5.8",
+    "styled-components": "^4.1.3"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.10.0",
+    "raw-loader": "^2.0.0",
+    "webpack": "^4.29.6",
+    "webpack-dev-server": "^3.2.1"
+  }
+}
