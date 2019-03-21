@@ -17,6 +17,8 @@ const GoogleBookLi = styled.li`
   padding: 2px 2px;
   transition: background 300ms linear;
   border-bottom: 1px solid #f1f1fc;
+  opacity: 1;
+  transition: opacity 300ms linear;
 
   :last-child {
     border-bottom: none;
@@ -37,6 +39,7 @@ const GoogleBookLi = styled.li`
 
   .label {
     font-size: 12px;
+    margin-right: 2px;
   }
 `;
 
@@ -60,7 +63,7 @@ const GoogleBook = ({ item }) => {
         <div style={{ flexGrow: 1 }} className="text">
           <h5>{title}</h5>
           <div>
-            {authors.map(a => (
+            {(authors || []).map(a => (
               <span key={`${title}=${a}`} className="label">
                 {a}
               </span>
@@ -72,10 +75,10 @@ const GoogleBook = ({ item }) => {
   );
 };
 
-const GoogleBooksList = ({ data }) => {
+const GoogleBooksList = ({ data, ...passProps }) => {
   console.log(data);
   return (
-    <APIComponentWrapper>
+    <APIComponentWrapper {...passProps}>
       <GoogleBookListWrapper>
         {data.items.map(item => (
           <GoogleBook item={item} key={item.id} />

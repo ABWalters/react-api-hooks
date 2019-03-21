@@ -2,7 +2,7 @@ import React from 'react';
 
 const Tabs = ({ index, onChange }) => {
   return (
-    <div>
+    <div style={{ marginBottom: 7 }}>
       <ul className="tab tab-block">
         <li className="tab-item" onClick={() => onChange(0)}>
           <a href="#" className={index === 0 ? 'active' : ''}>

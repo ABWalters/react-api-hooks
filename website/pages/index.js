@@ -9,6 +9,8 @@ import APIWithPagination from '../examples/APIWithPagination';
 import SimpleAPICallSource from '!!raw-loader!../examples/SimpleAPICall';
 import APIWithPaginationSource from '!!raw-loader!../examples/APIWithPagination';
 import Tabs from '../components/Tabs';
+import APIWithSearch from '../examples/APIWithSearch';
+import APIWithSearchSource from '!!raw-loader!../examples/APIWithSearch';
 
 const Index = ({
   url: {
@@ -29,12 +31,14 @@ const Index = ({
   return (
     <BaseLayout>
       <Tabs index={tabIndex} onChange={onChange} />
-      <br />
       {tabIndex === 0 && (
         <ExampleComponent Component={SimpleAPICall} componentSource={SimpleAPICallSource} />
       )}
       {tabIndex === 1 && (
         <ExampleComponent Component={APIWithPagination} componentSource={APIWithPaginationSource} />
+      )}
+      {tabIndex === 2 && (
+        <ExampleComponent Component={APIWithSearch} componentSource={APIWithSearchSource} />
       )}
     </BaseLayout>
   );

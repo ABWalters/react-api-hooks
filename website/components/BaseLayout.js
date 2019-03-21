@@ -5,7 +5,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 const OuterWrapper = styled.div`
   display: grid;
-  grid-template-rows: auto 1fr 50px;
+  grid-template-rows: auto auto 1fr;
   height: 100%;
 `;
 
@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body, html, #__next{
-    height: 100%;
+    min-height: 100%;
   }
   
   pre[class*="language-"]{
@@ -50,16 +50,29 @@ const NavbarWrapper = styled.div`
   padding: 10px 0;
 
   a {
-    color: #dff8eb;
+    color: #fff;
   }
 
   .btn.btn-link {
-    color: #00a9a5;
+    color: rgba(255, 255, 255, 0.6);
   }
 `;
 
 const FooterWrapper = styled.div`
   background-color: #0b5351;
+`;
+
+const HeroWrapper = styled.div`
+  background-color: #0b5351;
+  text-align: center;
+  color: #dff8eb;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin-bottom: 0.6rem;
+
+  .hero {
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
 `;
 
 const Navbar = () => (
@@ -70,13 +83,13 @@ const Navbar = () => (
           <a href="/" className="navbar-brand mr-2">
             React API Hooks
           </a>
-          <a href="" className="btn btn-link">
+          <a href="/" className="btn btn-link">
             Examples
           </a>
-          <a href="" className="btn btn-link">
+          <a href="/usage" className="btn btn-link">
             Usage
           </a>
-          <a href="" className="btn btn-link">
+          <a href="/reference" className="btn btn-link">
             Reference
           </a>
         </section>
@@ -89,13 +102,21 @@ const BaseLayout = ({ children }) => {
   return (
     <OuterWrapper>
       <Navbar />
+      <HeroWrapper>
+        <div className="hero">
+          <div className="hero-body">
+            <h1>React API Hooks</h1>
+            <p>React hooks for interacting with an API from a stateless component.</p>
+            <code style={{ padding: '8px 15px' }}>npm i react-api-hooks -s</code>
+          </div>
+        </div>
+      </HeroWrapper>
       <Container>
         <BodyWrapper>
           <GlobalStyle />
           {children}
         </BodyWrapper>
       </Container>
-      <FooterWrapper>I are footer!</FooterWrapper>
     </OuterWrapper>
   );
 };
