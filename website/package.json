@@ -7,7 +7,8 @@
   "scripts": {
     "start": "next",
     "build": "next build",
-    "production": "next start"
+    "production": "next start",
+    "export": "npm run build && next export"
   },
   "author": "",
   "license": "ISC",
