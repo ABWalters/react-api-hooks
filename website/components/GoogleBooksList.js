@@ -1,6 +1,7 @@
 import React from 'react';
 import APIComponentWrapper from './APIComponentWrapper';
 import styled from 'styled-components';
+import NoResults from './NoResults';
 
 const GoogleBookListWrapper = styled.ul`
   box-shadow: none;
@@ -76,11 +77,16 @@ const GoogleBook = ({ item }) => {
 };
 
 const GoogleBooksList = ({ data, ...passProps }) => {
-  console.log(data);
+  const items = data.items || [];
+
+  if (items.length === 0) {
+    return <NoResults />;
+  }
+
   return (
     <APIComponentWrapper {...passProps}>
       <GoogleBookListWrapper>
-        {data.items.map(item => (
+        {items.map(item => (
           <GoogleBook item={item} key={item.id} />
         ))}
       </GoogleBookListWrapper>

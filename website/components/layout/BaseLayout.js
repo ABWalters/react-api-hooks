@@ -1,12 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import 'spectre.css';
+import '../../node_modules/spectre.css/dist/spectre.css';
 import styled, { createGlobalStyle } from 'styled-components';
+import Menu from './Menu';
+import Grid from './Grid';
 
 const OuterWrapper = styled.div`
   display: grid;
   grid-template-rows: auto auto 1fr;
   height: 100%;
+  position: relative;
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -114,6 +116,11 @@ const Tag = ({ children }) => {
   );
 };
 
+const MenuLayoutWrapper = styled.div`
+  max-width: 10rem;
+  position: absolute;
+`;
+
 const BaseLayout = ({ children }) => {
   return (
     <OuterWrapper>
@@ -122,8 +129,10 @@ const BaseLayout = ({ children }) => {
         <div className="hero">
           <div className="hero-body">
             <h1>React API Hooks</h1>
-            <p>React hooks to interact with an API from a stateless component.</p>
-            <code style={{ padding: '8px 15px' }}>npm i react-api-hooks -s</code>
+            <p>React hooks to interact with an API from a stateless
+              component.</p>
+            <code style={{ padding: '8px 15px' }}>npm i react-api-hooks
+              -s</code>
             <div style={{ marginTop: '1.4rem' }}>
               <Tag>react</Tag>
               <Tag>hooks</Tag>
@@ -134,12 +143,16 @@ const BaseLayout = ({ children }) => {
           </div>
         </div>
       </HeroWrapper>
-      <Container>
-        <BodyWrapper>
-          <GlobalStyle />
-          {children}
-        </BodyWrapper>
-      </Container>
+
+      <Grid>
+        <Menu />
+        <Container>
+          <BodyWrapper>
+            <GlobalStyle />
+            {children}
+          </BodyWrapper>
+        </Container>
+      </Grid>
     </OuterWrapper>
   );
 };

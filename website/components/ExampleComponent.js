@@ -1,4 +1,7 @@
 import React from 'react';
+import 'prismjs';
+import 'prismjs/components/prism-jsx';
+import 'prismjs/themes/prism-coy.css';
 import { PrismCode } from 'react-prism';
 
 const ExampleComponent = ({ Component, componentSource }) => {
