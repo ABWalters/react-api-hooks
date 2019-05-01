@@ -1,4 +1,4 @@
-import Document from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
@@ -13,12 +13,44 @@ export default class MyDocument extends Document {
         });
 
       const initialProps = await Document.getInitialProps(ctx);
+
+      // Used by Google Analytics
+      const isProduction = process.env.NODE_ENV === 'production';
+
       return {
         ...initialProps,
+        isProduction,
         styles: <>{initialProps.styles}{sheet.getStyleElement()}</>
       };
     } finally {
       sheet.seal();
     }
+  }
+
+  render() {
+    const { isProduction } = this.props;
+    return (
+      <Html>
+        <Head>
+          <style>{`body { margin: 0 } /* custom! */`}</style>
+        </Head>
+        <body className="custom_class">
+          <Main />
+          <NextScript />
+          {isProduction && (<>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async
+                    src="https://www.googletagmanager.com/gtag/js?id=UA-53236741-7"></script>
+            <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'UA-53236741-7');
+            </script>
+          </>)}
+        </body>
+      </Html>
+    );
   }
 }
