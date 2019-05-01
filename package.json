@@ -1,6 +1,6 @@
 {
   "name": "react-api-hooks",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A set of React hooks for working with APIs.",
   "main": "dist/index.js",
   "dependencies": {
@@ -9,8 +9,8 @@
     "lodash.debounce": "^4.0.8"
   },
   "peerDependencies": {
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -24,6 +24,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^1.5.0",
+    "jsdoc-to-markdown": "^4.0.1",
     "prettier": "^1.16.4",
     "rollup": "^1.7.0"
   },
@@ -31,9 +32,9 @@
     "dist"
   ],
   "scripts": {
-    "start": "parcel demo/index.html",
     "build": "rollup src/index.js --format cjs --file dist/index.js",
-    "test": "npm test"
+    "test": "npm test",
+    "docs": "node scripts/generate-reference.js"
   },
   "repository": {
     "type": "git",
