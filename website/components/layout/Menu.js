@@ -7,14 +7,10 @@ const MenuWrapper = styled.div`
   margin: 1rem 1rem;
 `;
 
-const urlPrefix = process.env.NODE_ENV === 'production'
-  ? '/react-api-hooks'
-  : '';
-
 const MenuItem = ({ children, href }) => {
   return (
     <li className="menu-item">
-      <Link scroll={false} href={urlPrefix + href}>
+      <Link scroll={false} href={href}>
         <a>
           {children}
         </a>
