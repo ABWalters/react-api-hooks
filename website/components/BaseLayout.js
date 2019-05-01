@@ -98,16 +98,39 @@ const Navbar = () => (
   </NavbarWrapper>
 );
 
+const Tag = ({ children }) => {
+  return (
+    <span
+      className="label"
+      style={{
+        margin: '0 .4rem',
+        padding: '.2rem .4rem',
+        color: '#fff',
+        backgroundColor: 'rgba(255, 255, 255, 0.1)'
+      }}
+    >
+      {children}
+    </span>
+  );
+};
+
 const BaseLayout = ({ children }) => {
   return (
     <OuterWrapper>
-      <Navbar />
+      {/* <Navbar /> */}
       <HeroWrapper>
         <div className="hero">
           <div className="hero-body">
             <h1>React API Hooks</h1>
             <p>React hooks to interact with an API from a stateless component.</p>
             <code style={{ padding: '8px 15px' }}>npm i react-api-hooks -s</code>
+            <div style={{ marginTop: '1.4rem' }}>
+              <Tag>react</Tag>
+              <Tag>hooks</Tag>
+              <Tag>API</Tag>
+              <Tag>axios</Tag>
+              <Tag>stateless</Tag>
+            </div>
           </div>
         </div>
       </HeroWrapper>
