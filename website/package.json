@@ -8,7 +8,7 @@
     "start": "next",
     "build": "next build",
     "production": "next start",
-    "now-build": "next build && next export -o dist"
+    "now-build": "next build && next export"
   },
   "author": "",
   "license": "ISC",

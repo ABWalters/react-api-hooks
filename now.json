@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "name": "nextjs-static",
+  "name": "react-api-hooks",
   "builds": [
-  	{ "src": "website/package.json", "use": "@now/static-build" }
+  	{ "src": "website/package.json", "use": "@now/static-build", "config": { "distDir": "website/out" } }
   ]
 }
