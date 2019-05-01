@@ -8,6 +8,7 @@
     "start": "next",
     "build": "next build",
     "production": "next start",
+    "export": "npm run build && next export",
     "now-build": "next build && next export"
   },
   "author": "",
