@@ -1,6 +1,14 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
+const googleAnalyticsInner = `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-53236741-7');
+`;
+
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
@@ -38,16 +46,9 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
           {isProduction && (<>
-            <!-- Global site tag (gtag.js) - Google Analytics -->
             <script async
-                    src="https://www.googletagmanager.com/gtag/js?id=UA-53236741-7"></script>
-            <script>
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-
-              gtag('config', 'UA-53236741-7');
-            </script>
+                    src="https://www.googletagmanager.com/gtag/js?id=UA-53236741-7" />
+            <script dangerouslySetInnerHTML={{__html: googleAnalyticsInner}} />
           </>)}
         </body>
       </Html>
