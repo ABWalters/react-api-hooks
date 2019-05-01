@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[11],{"1Cpp":function(n,e,t){"use strict";t.r(e);var u=t("q1tI"),a=t.n(u);t("17x9");e.default=function(n){return a.a.createElement("div",null)}},adbd:function(n,e,t){(window.__NEXT_P=window.__NEXT_P||[]).push(["/reference/use-inf-api",function(){var n=t("1Cpp");return{page:n.default||n}}])}},[["adbd",1,0]]]);
