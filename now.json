@@ -2,6 +2,6 @@
   "version": 2,
   "name": "react-api-hooks",
   "builds": [
-  	{ "src": "website/package.json", "use": "@now/static-build", "config": { "distDir": "website/out" } }
+  	{ "src": "website/package.json", "use": "@now/static-build", "config": { "distDir": "out" } }
   ]
 }
