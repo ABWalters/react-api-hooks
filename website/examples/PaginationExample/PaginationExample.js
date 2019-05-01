@@ -6,7 +6,7 @@ import Paginator from '../../components/Paginator';
 import { booksInitialParams, booksURL } from '../../constants';
 import OffsetPagination from './OffsetPagination';
 
-const APIWithPagination = () => {
+const PaginationExample = () => {
   const { params, updateParams } = useParams(booksInitialParams);
   const { data = [], error, isLoading } = useAPI(booksURL, { params });
   const pagination = new OffsetPagination(data.items || [], params, updateParams, 5);
@@ -29,4 +29,4 @@ const APIWithPagination = () => {
   );
 };
 
-export default APIWithPagination;
+export default PaginationExample;

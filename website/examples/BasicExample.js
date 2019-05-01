@@ -4,7 +4,7 @@ import GoogleBooksList from '../components/GoogleBooksList';
 import { booksInitialParams, booksURL } from '../constants';
 import { Loading, Error } from '../components/Status';
 
-const SimpleAPICall = () => {
+const BasicExample = () => {
   const { data = [], error, isLoading } = useAPI(booksURL, { params: booksInitialParams });
 
   if (error) {
@@ -14,4 +14,4 @@ const SimpleAPICall = () => {
   return isLoading ? <Loading /> : <GoogleBooksList data={data} />;
 };
 
-export default SimpleAPICall;
+export default BasicExample;
