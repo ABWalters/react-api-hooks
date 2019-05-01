@@ -1,8 +1,9 @@
 {
   "name": "react-api-hooks-website",
   "version": "1.0.0",
-  "description": "",
+  "description": "Website for the react-api-hooks library.",
   "main": "index.js",
+  "repository": "https://github.com/ABWalters/react-api-hooks",
   "scripts": {
     "start": "next",
     "build": "next build",
@@ -15,11 +16,11 @@
     "next": "^8.0.3",
     "prismjs": "^1.15.0",
     "query-string": "^6.4.0",
-    "react": "^16.8.4",
-    "react-api-hooks": "0.0.7",
+    "react": "^16.8.6",
+    "react-api-hooks": "0.0.8",
     "react-dom": "^16.8.4",
+    "react-markdown": "^4.0.8",
     "react-prism": "^4.3.2",
-    "spectre-css": "^1.0.0",
     "spectre.css": "^0.5.8",
     "styled-components": "^4.1.3"
   },
