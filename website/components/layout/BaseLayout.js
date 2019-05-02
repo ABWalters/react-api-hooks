@@ -28,8 +28,6 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const BodyWrapper = styled.div`
-  // border: 1px solid #eee;
-  margin-top: 10px;
   margin-bottom: 40px;
   border-radius: 4px;
   overflow: hidden;
@@ -129,10 +127,8 @@ const BaseLayout = ({ children }) => {
         <div className="hero">
           <div className="hero-body">
             <h1>React API Hooks</h1>
-            <p>React hooks to interact with an API from a stateless
-              component.</p>
-            <code style={{ padding: '8px 15px' }}>npm i react-api-hooks
-              -s</code>
+            <p>React hooks to interact with an API from a stateless component.</p>
+            <code style={{ padding: '8px 15px' }}>npm i react-api-hooks -s</code>
             <div style={{ marginTop: '1.4rem' }}>
               <Tag>react</Tag>
               <Tag>hooks</Tag>
@@ -143,6 +139,8 @@ const BaseLayout = ({ children }) => {
           </div>
         </div>
       </HeroWrapper>
+
+      <br />
 
       <Grid>
         <Menu />
