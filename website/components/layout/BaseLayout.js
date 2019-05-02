@@ -113,7 +113,7 @@ const BaseLayout = ({ children }) => {
         <div className="hero">
           <div className="hero-body">
             <h1>React API Hooks</h1>
-            <p>React hooks to interact with an API from a stateless component.</p>
+            <p>React hooks to interact with an API from a stateless component using axios.</p>
             <code style={{ padding: '8px 15px' }}>npm i react-api-hooks -s</code>
             <div style={{ marginTop: '1.4rem' }}>
               <Tag>react</Tag>
