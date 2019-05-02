@@ -1,18 +1,16 @@
 const jsdoc2md = require('jsdoc-to-markdown');
 const fs = require('fs');
 
-jsdoc2md.render({ files: 'src/useAPI.js' }).then(markdown => {
-  console.log(markdown);
-  fs.writeFileSync(
-    'website/reference/use-api.md',
-    markdown
-  );
-});
+function generateReferenceDoc(inputFl, outputFl) {
+  jsdoc2md
+    .render({
+      files: inputFl,
+      template: `{{>all-docs~}}`
+    })
+    .then(markdown => {
+      fs.writeFileSync(outputFl, markdown);
+    });
+}
 
-jsdoc2md.render({ files: 'src/useParams.js' }).then(markdown => {
-  console.log(markdown);
-  fs.writeFileSync(
-    'website/reference/use-params.md',
-    markdown
-  );
-});
+generateReferenceDoc('src/useAPI.js', 'website/reference/use-api.md');
+generateReferenceDoc('src/useParams.js', 'website/reference/use-params.md');
