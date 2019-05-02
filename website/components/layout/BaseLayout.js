@@ -1,4 +1,5 @@
 import React from 'react';
+import GithubCorner from 'react-github-corner';
 import '../../node_modules/spectre.css/dist/spectre.css';
 import styled, { createGlobalStyle } from 'styled-components';
 import Menu from './Menu';
@@ -63,7 +64,15 @@ const FooterWrapper = styled.div`
 `;
 
 const HeroWrapper = styled.div`
-  background-color: #0b5351;
+  // background-color: #0b5351;
+  // background-color: #0093e9;
+  // background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  background: #4b6cb7; /* fallback for old browsers */
+  background: linear-gradient(
+    to right,
+    #182848,
+    #4b6cb7
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   text-align: center;
   color: #dff8eb;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -74,29 +83,6 @@ const HeroWrapper = styled.div`
     padding-top: 1rem;
   }
 `;
-
-const Navbar = () => (
-  <NavbarWrapper>
-    <header className="navbar">
-      <Container>
-        <section className="navbar-section">
-          <a href="/" className="navbar-brand mr-2">
-            React API Hooks
-          </a>
-          <a href="/" className="btn btn-link">
-            Examples
-          </a>
-          <a href="/usage" className="btn btn-link">
-            Usage
-          </a>
-          <a href="/reference" className="btn btn-link">
-            Reference
-          </a>
-        </section>
-      </Container>
-    </header>
-  </NavbarWrapper>
-);
 
 const Tag = ({ children }) => {
   return (
@@ -122,8 +108,8 @@ const MenuLayoutWrapper = styled.div`
 const BaseLayout = ({ children }) => {
   return (
     <OuterWrapper>
-      {/* <Navbar /> */}
       <HeroWrapper>
+        <GithubCorner href="https://github.com/ABWalters/react-api-hooks" />
         <div className="hero">
           <div className="hero-body">
             <h1>React API Hooks</h1>

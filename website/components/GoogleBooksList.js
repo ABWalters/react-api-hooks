@@ -44,7 +44,7 @@ const GoogleBookLi = styled.li`
   }
 `;
 
-const GoogleBook = ({ item }) => {
+export const GoogleBook = ({ item }) => {
   const { volumeInfo } = item;
   const { imageLinks, title, authors } = volumeInfo;
   return (
@@ -76,6 +76,16 @@ const GoogleBook = ({ item }) => {
   );
 };
 
+export const GoogleBooksListInner = ({ items }) => {
+  return (
+    <GoogleBookListWrapper>
+      {items.map(item => (
+        <GoogleBook item={item} key={item.id} />
+      ))}
+    </GoogleBookListWrapper>
+  );
+};
+
 const GoogleBooksList = ({ data, ...passProps }) => {
   const items = data.items || [];
 
@@ -85,11 +95,7 @@ const GoogleBooksList = ({ data, ...passProps }) => {
 
   return (
     <APIComponentWrapper {...passProps}>
-      <GoogleBookListWrapper>
-        {items.map(item => (
-          <GoogleBook item={item} key={item.id} />
-        ))}
-      </GoogleBookListWrapper>
+      <GoogleBooksListInner items={items} />
     </APIComponentWrapper>
   );
 };

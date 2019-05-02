@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'spectre.css/dist/spectre-exp.css';
-import APIComponentWrapper from './APIComponentWrapper';
+import APIComponentWrapper from '../APIComponentWrapper';
 
 const Loading = () => (
   <APIComponentWrapper>

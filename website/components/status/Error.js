@@ -1,13 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
+import APIComponentWrapper from '../APIComponentWrapper';
 
-class Error extends Component {
-  render() {
-    return (
-      <div>
-        <h3>An error occurred communicating with the API.</h3>
+const Error = ({ error }) => {
+  return (
+    <APIComponentWrapper>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          padding: '0 25px'
+        }}
+      >
+        <div style={{ flexGrow: 1 }} />
+        <div style={{ textAlign: 'center' }}>
+          <h3>Error</h3>
+          <p>An error occurred.</p>
+          <small>{error.message || ''}</small>
+        </div>
+        <div style={{ flexGrow: 1 }} />
       </div>
-    );
-  }
-}
+    </APIComponentWrapper>
+  );
+};
 
 export default Error;

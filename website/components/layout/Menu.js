@@ -35,6 +35,9 @@ const Menu = () => {
         <MenuItem href="/examples/filter" subTitle="useAPI + useParams">
           Filter Example
         </MenuItem>
+        <MenuItem href="/examples/inf-scroll" subTitle="useInfAPI">
+          Infinite Scroll Example
+        </MenuItem>
         <li className="divider" data-content="Reference" />
         <MenuItem href="/reference/use-api">useAPI</MenuItem>
         <MenuItem href="/reference/use-params">useParams</MenuItem>
