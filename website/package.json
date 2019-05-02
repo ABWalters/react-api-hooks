@@ -19,7 +19,7 @@
     "prismjs": "^1.15.0",
     "query-string": "^6.4.0",
     "react": "^16.8.6",
-    "react-api-hooks": "file:react-api-hooks-0.0.8.tgz",
+    "react-api-hooks": "^0.0.9",
     "react-dom": "^16.8.4",
     "react-github-corner": "^2.3.0",
     "react-markdown": "^4.0.8",
