@@ -14,3 +14,4 @@ function generateReferenceDoc(inputFl, outputFl) {
 
 generateReferenceDoc('src/useAPI.js', 'website/reference/use-api.md');
 generateReferenceDoc('src/useParams.js', 'website/reference/use-params.md');
+generateReferenceDoc('src/useInfAPI.js', 'website/reference/use-inf-api.md');

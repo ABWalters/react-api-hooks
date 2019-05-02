@@ -27,7 +27,7 @@ import debounce from 'lodash.debounce';
 /**
  * React hook to keep query parameters in state.
  *
- * Used in conjunction with the other hooks to filter and pagination API calls.
+ * Used in conjunction with the other hooks to filter and paginate APIs.
  *
  * Includes the ability the debounce an update, which is useful for delaying API calls while the user is typing.
  *

@@ -6,6 +6,21 @@ import { offsetPaginator, responseToData } from './utils';
 const { CancelToken } = axios;
 
 /**
+ * Paginator function used to alter the axios config object, in order to fetch the next page.
+ * @typedef {function} paginatorFunc
+ * @param config {Object} - Axios config object
+ * @param paginationState {Object} - Object kept internally to keep track of pagination
+ * @return output {Object[]} - Return tuple \[updatedConfig: Object, updatedPaginationState: Object\]
+ */
+
+/**
+ * Function used to extract items from the API response.
+ * @typedef {function} responseToItemsFunc
+ * @param response {Object} - Axios response object
+ * @return output {Object} - Return tuple \[items: Object[], hasMore: boolean\]
+ */
+
+/**
  * The object returned by the useInfAPI hook.
  * @typedef {Object} useInfAPIOutput
  * @property {Object[]} items - Items provided by the API
@@ -13,7 +28,7 @@ const { CancelToken } = axios;
  * @property {boolean} isLoading - Indicates if their is a pending API call for the **first** page of items.
  * @property {boolean} isPaging - Indicates if their is a pending API call for the **any** page of items.
  * @property {setItemsFunc} setItems - Set the items being kept in state
- * @property {function} fetchMore - Function called from the component in order to fetch the next page
+ * @property {responseToItemsFunc} fetchPage - Function called from the component in order to fetch the next page
  */
 
 /**
@@ -27,10 +42,14 @@ const { CancelToken } = axios;
  *
  * Allows you to pass an [axios config object](https://github.com/axios/axios#request-config), for complete control of the request being sent.
  *
+ * By default it will paginate using a query param `offset`, and assumes that the API returns an array of items.
+ *
+ * If this is not appropriate for your API, then you will need to provide your own `paginator` and `responseToItems` functions.
+ *
  * @param {string} url - URL that the API call is made to.
  * @param {Object} config={} - Axios config object passed to the axios.request method.
- * @param {function} paginator= - Function used to update the config object in order to paginate
- * @param {function} responseToItems= - Function used to extract an array of items from response object.
+ * @param {paginatorFunc} paginator=offsetPaginator - Function used to update the config object in order to paginate
+ * @param {function} responseToItems=responseToData - Function used to extract an array of items from response object.
  * @returns {useInfAPIOutput} output
  */
 function useInfAPI(
@@ -45,33 +64,42 @@ function useInfAPI(
     error: undefined,
     isLoading: true,
     isPaging: true,
-    hasMore: false
+    hasMore: false,
+    source: CancelToken.source()
   });
 
   const configHash = hash(config);
 
   const { items, paginationState } = state;
 
-  function callAPI(cancelToken, isLoading) {
+  function callAPI(isLoading) {
     const activePaginationState = isLoading ? {} : paginationState; // Reset pagination when config object changes.
     const [updatedConfig, updatedPaginationState] = paginator(config, activePaginationState);
 
-    setState({ ...state, isLoading, isPaging: true, paginationState: updatedPaginationState });
+    setState({
+      ...state,
+      isLoading,
+      isPaging: true,
+      paginationState: updatedPaginationState
+    });
     axios(url, {
       ...updatedConfig,
-      cancelToken
+      cancelToken: state.source.token
     })
       .then(response => {
         const [pageItems, hasMore] = responseToItems(response);
-        if (pageItems instanceof []) {
+        if (typeof pageItems === typeof []) {
           setState({
             ...state,
             items: items.concat(pageItems),
             error: undefined,
             isLoading: false,
             isPaging: false,
-            hasMore
+            hasMore,
+            paginationState: updatedPaginationState
           });
+        } else {
+          console.log("Warning: responseToItems didn't return an array.");
         }
       })
       .catch(error => {
@@ -83,17 +111,15 @@ function useInfAPI(
       });
   }
 
-  let source;
   useEffect(() => {
-    source = CancelToken.source();
-    callAPI(source.token, true);
+    setState({ ...state, source: CancelToken.source() });
+    callAPI(true);
     return () => {
-      source.cancel('useEffect cleanup.');
+      state.source.cancel('useEffect cleanup.');
     };
   }, [url, configHash]);
 
   const { error, isPaging, isLoading, hasMore } = state;
-
   return {
     items,
     error,
@@ -101,7 +127,7 @@ function useInfAPI(
     isLoading,
     hasMore,
     setItems: newItems => setState({ ...state, items: newItems }),
-    fetchPage: () => callAPI(source.token, false)
+    fetchPage: () => callAPI(false)
   };
 }
 

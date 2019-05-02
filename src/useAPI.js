@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import hash from 'hash-object';
 
-const CancelToken = axios.CancelToken;
+const { CancelToken } = axios;
 
 /**
  * The object returned by the useAPI hook.
  * @typedef {Object} useAPIOutput
  * @property {Object|undefined} data - The data attribute from the axios response.
  * @property {Object|undefined} response - The axios response.
- * @property {Object|undefined} error - The axios error object is an error occurs.
+ * @property {Object|undefined} error - The axios error object if an error occurs.
  * @property {boolean} isLoading - Indicates if their is a pending API call.
  * @property {setDataFunc} setData - Set the response data object.
  */
