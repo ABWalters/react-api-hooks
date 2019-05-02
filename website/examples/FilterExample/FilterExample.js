@@ -1,15 +1,14 @@
 import React from 'react';
 import { useAPI, useParams } from 'react-api-hooks';
-import GoogleBooksList from '../components/GoogleBooksList';
-import { booksInitialParams, booksURL } from '../constants';
-import { SearchInput } from '../components/SearchInput';
+import GoogleBooksList from '../../components/GoogleBooksList';
+import { booksInitialParams, booksURL } from '../../constants';
 import TypeSelect from './TypeSelect';
 import Error from '../../components/status/Error';
 import Loading from '../../components/status/Loading';
+import { SearchInput } from './SearchInput';
 
 const FilterExample = () => {
-  const { params, updateParams, debouncedUpdateParams, isStale } = useParams(
-    booksInitialParams);
+  const { params, updateParams, debouncedUpdateParams, isStale } = useParams(booksInitialParams);
   const { data = [], error, isLoading } = useAPI(booksURL, { params });
 
   if (error) {
@@ -28,11 +27,14 @@ const FilterExample = () => {
           }
           defaultValue="react"
         />
-        <TypeSelect style={{ flexGrow: 1, flexBasis: 0 }} onChange={e =>
-          updateParams({
-            filter: e.target.value ? e.target.value : undefined
-          })
-        } />
+        <TypeSelect
+          style={{ flexGrow: 1, flexBasis: 0 }}
+          onChange={e =>
+            updateParams({
+              filter: e.target.value ? e.target.value : undefined
+            })
+          }
+        />
       </div>
       {isLoading ? (
         <Loading />
