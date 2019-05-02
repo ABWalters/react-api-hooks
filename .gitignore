@@ -26,3 +26,4 @@ yarn-error.log*
 .idea
 dist
 out
+*.tgz
