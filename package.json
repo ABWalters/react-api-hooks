@@ -1,6 +1,6 @@
 {
   "name": "react-api-hooks",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A set of React hooks for working with APIs.",
   "main": "dist/index.js",
   "dependencies": {
