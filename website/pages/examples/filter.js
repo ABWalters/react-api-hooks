@@ -2,8 +2,8 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import ExampleComponent from '../../components/ExampleComponent';
 import BaseLayout from '../../components/layout/BaseLayout';
-import APIWithSearch from '../../examples/FilterExample';
-import APIWithSearchSource from '!!raw-loader!../../examples/FilterExample';
+import APIWithSearch from '../../examples/FilterExample/FilterExample';
+import APIWithSearchSource from '!!raw-loader!../../examples/FilterExample/FilterExample';
 
 const description = `
 # Filter Example
