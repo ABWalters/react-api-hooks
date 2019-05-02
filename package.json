@@ -15,7 +15,7 @@
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.15.3",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.1.0",
@@ -26,6 +26,8 @@
     "eslint-plugin-react-hooks": "^1.5.0",
     "jsdoc-to-markdown": "^4.0.1",
     "prettier": "^1.16.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "rollup": "^1.7.0"
   },
   "files": [
