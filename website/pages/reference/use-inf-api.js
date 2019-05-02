@@ -1,16 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import UseInfAPIReference from '!!raw-loader!../../reference/use-inf-api.md';
+import ReferenceDisplay from '../../components/ReferenceDisplay';
 
-const UseInfApi = props => {
-  return (
-    <div>
-
-    </div>
-  );
+const UseInfApi = () => {
+  return <ReferenceDisplay source={UseInfAPIReference} />;
 };
 
-UseInfApi.propTypes = {
-  
-};
+UseInfApi.propTypes = {};
 
 export default UseInfApi;
