@@ -1,10 +1,11 @@
 import React from 'react';
 import { useAPI, useParams } from 'react-api-hooks';
-import { Error, Loading } from '../components/Status';
 import GoogleBooksList from '../components/GoogleBooksList';
 import { booksInitialParams, booksURL } from '../constants';
 import { SearchInput } from '../components/SearchInput';
 import TypeSelect from './TypeSelect';
+import Error from '../../components/status/Error';
+import Loading from '../../components/status/Loading';
 
 const FilterExample = () => {
   const { params, updateParams, debouncedUpdateParams, isStale } = useParams(

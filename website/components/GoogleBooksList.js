@@ -1,7 +1,7 @@
 import React from 'react';
-import APIComponentWrapper from './APIComponentWrapper';
 import styled from 'styled-components';
-import NoResults from './NoResults';
+import APIComponentWrapper from './APIComponentWrapper';
+import NoResults from './status/NoResults';
 
 const GoogleBookListWrapper = styled.ul`
   box-shadow: none;

@@ -1,10 +1,11 @@
 import React from 'react';
 import { useAPI, useParams } from 'react-api-hooks';
-import { Error, Loading } from '../../components/Status';
 import GoogleBooksList from '../../components/GoogleBooksList';
 import Paginator from '../../components/Paginator';
 import { booksInitialParams, booksURL } from '../../constants';
 import OffsetPagination from './OffsetPagination';
+import Error from '../../components/status/Error';
+import Loading from '../../components/status/Loading';
 
 const PaginationExample = () => {
   const { params, updateParams } = useParams(booksInitialParams);

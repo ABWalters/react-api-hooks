@@ -2,7 +2,8 @@ import React from 'react';
 import { useAPI } from 'react-api-hooks';
 import GoogleBooksList from '../components/GoogleBooksList';
 import { booksInitialParams, booksURL } from '../constants';
-import { Loading, Error } from '../components/Status';
+import Error from '../components/status/Error';
+import Loading from '../components/status/Loading';
 
 const BasicExample = () => {
   const { data = [], error, isLoading } = useAPI(booksURL, { params: booksInitialParams });
