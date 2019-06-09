@@ -1,3 +1,7 @@
+import { getOffsetPaginator } from 'react-api-hooks';
+
+console.log('getOffset', getOffsetPaginator);
+
 const pageSize = 5;
 
 /**
@@ -10,17 +14,7 @@ const pageSize = 5;
  * @param config {Object} - The axios config object passed to the hook.
  * @param paginationState {Object} - An object kept in state to keep track of pagination.
  */
-export function paginator(config, paginationState) {
-  const { params = {} } = config;
-  const { startIndex = 0 } = paginationState;
-  const newIndex = startIndex + (params.maxResults || pageSize);
-  const updatedParams = { ...params, startIndex: newIndex };
-
-  const updatedConfig = { ...config, params: updatedParams };
-  const updatedPaginationState = { startIndex: newIndex };
-
-  return [updatedConfig, updatedPaginationState];
-}
+export const paginator = getOffsetPaginator('startIndex', pageSize);
 
 /**
  * Google Books Item Extractor
