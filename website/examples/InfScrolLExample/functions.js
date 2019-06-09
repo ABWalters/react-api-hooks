@@ -1,7 +1,5 @@
 import { getOffsetPaginator } from 'react-api-hooks';
 
-console.log('getOffset', getOffsetPaginator);
-
 const pageSize = 5;
 
 /**

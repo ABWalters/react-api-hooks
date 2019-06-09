@@ -109,7 +109,7 @@ const BaseLayout = ({ children }) => {
   return (
     <OuterWrapper>
       <HeroWrapper>
-        <GithubCorner href="https://github.com/ABWalters/react-api-hooks" />
+        <GithubCorner bannerColor="#0000004a" href="https://github.com/ABWalters/react-api-hooks" />
         <div className="hero">
           <div className="hero-body">
             <h1>React API Hooks</h1>

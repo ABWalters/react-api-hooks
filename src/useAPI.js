@@ -59,7 +59,7 @@ function useAPI(url, config = {}, initialFetch = true) {
       })
       .catch(error => {
         if (axios.isCancel(error)) {
-          console.log('Request canceled by cleanup', error.message);
+          console.log('Request canceled by cleanup: ', error.message);
         } else {
           setState({ error, response: undefined, isLoading: false });
         }

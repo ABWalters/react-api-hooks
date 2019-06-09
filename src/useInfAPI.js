@@ -81,7 +81,8 @@ function useInfAPI(
       ...state,
       isLoading,
       isPaging: true,
-      paginationState: updatedPaginationState
+      paginationState: updatedPaginationState,
+      items: isLoading ? [] : items // Clear items when config changes
     });
     axios(url, {
       ...updatedConfig,
@@ -92,7 +93,7 @@ function useInfAPI(
         if (typeof pageItems === typeof []) {
           setState({
             ...state,
-            items: items.concat(pageItems),
+            items: isLoading ? pageItems : items.concat(pageItems), // If the config object changed, the reset items
             error: undefined,
             isLoading: false,
             isPaging: false,
@@ -105,7 +106,7 @@ function useInfAPI(
       })
       .catch(error => {
         if (axios.isCancel(error)) {
-          console.log('Request canceled by cleanup', error.message);
+          console.log('Request canceled by cleanup: ', error.message);
         } else {
           setState({ ...state, error, isLoading: false, isPaging: false });
         }
