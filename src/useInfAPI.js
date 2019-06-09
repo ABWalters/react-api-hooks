@@ -64,13 +64,14 @@ function useInfAPI(
     error: undefined,
     isLoading: true,
     isPaging: true,
-    hasMore: false,
-    source: CancelToken.source()
+    hasMore: false
   });
 
   const configHash = hash(config);
 
   const { items, paginationState } = state;
+
+  const source = CancelToken.source();
 
   function callAPI(isLoading) {
     const activePaginationState = isLoading ? {} : paginationState; // Reset pagination when config object changes.
@@ -84,7 +85,7 @@ function useInfAPI(
     });
     axios(url, {
       ...updatedConfig,
-      cancelToken: state.source.token
+      cancelToken: source.token
     })
       .then(response => {
         const [pageItems, hasMore] = responseToItems(response);
@@ -112,10 +113,9 @@ function useInfAPI(
   }
 
   useEffect(() => {
-    setState({ ...state, source: CancelToken.source() });
     callAPI(true);
     return () => {
-      state.source.cancel('useEffect cleanup.');
+      source.cancel('useEffect cleanup.');
     };
   }, [url, configHash]);
 
