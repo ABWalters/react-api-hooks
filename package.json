@@ -1,10 +1,12 @@
 {
   "name": "react-api-hooks",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "A set of React hooks for working with APIs.",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "unpkg": "dist/index.umd.js",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "hash-object": "^0.1.7",
     "lodash.debounce": "^4.0.8"
   },
@@ -13,28 +15,30 @@
     "react-dom": "^16.8.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.3.4",
+    "@babel/core": "^7.4.5",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-import": "^2.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-react": "^7.12.4",
-    "eslint-plugin-react-hooks": "^1.5.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
     "jsdoc-to-markdown": "^4.0.1",
-    "prettier": "^1.16.4",
+    "microbundle": "^0.11.0",
+    "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "rollup": "^1.7.0"
+    "rollup": "^1.14.4"
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "rollup src/index.js --format cjs --file dist/index.js",
+    "start": "microbundle watch src/index.js --target node",
+    "build": "microbundle src/index.js --target node",
     "test": "npm test",
     "docs": "node scripts/generate-reference.js"
   },
@@ -46,7 +50,10 @@
     "reactjs",
     "react-hooks",
     "axios",
-    "api"
+    "api",
+    "stateless-components",
+    "reactjs",
+    "hooks"
   ],
   "author": "ABWalters",
   "license": "MIT",

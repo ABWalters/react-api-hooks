@@ -12,6 +12,7 @@ React hooks to interact with an API from a stateless component using axios.
  - Ability to filter and paginate API results
  - Ability to delay API calls while the user is typing
  - Works with infinite scroll components
+ - Request auto-cancellation for concurrent requests or component unmount
 
 ## Examples:
 - [Basic](https://react-api-hooks.abwalters.now.sh/examples/basic/)
@@ -42,6 +43,34 @@ const TestComponent = () => {
   return (
       <div>
         {data.map(item => <span key={item.id}>{item.text}</span>)}
+      </div>
+    )
+}
+```
+
+## Advanced Usage
+```javascript
+import { useAPI } from 'react-api-hooks';
+
+const TestComponent = () => {
+  const axiosConfig = {
+    method: 'POST',
+    data: { foo: 'bar' },
+    params: { id: '14' }
+  };
+  const { response, error, isLoading } = useAPI(url, axiosConfig);
+  
+ if (error){
+   return <Error />
+ }
+        
+ if (isLoading){
+   return <Loading />
+ }
+    
+  return (
+      <div>
+        {response.data.map(item => <span key={item.id}>{item.text}</span>)}
       </div>
     )
 }

@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "react-api-hooks",
+  "alias": "react-api-hooks",
   "builds": [
     {
       "src": "website/package.json",
