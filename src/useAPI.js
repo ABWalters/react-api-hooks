@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
 import hash from 'hash-object';
+import { useEffect, useState } from 'react';
 
 const { CancelToken } = axios;
 
@@ -11,11 +11,15 @@ const { CancelToken } = axios;
  * @property {Object|undefined} response - The axios response.
  * @property {Object|undefined} error - The axios error object if an error occurs.
  * @property {boolean} isLoading - Indicates if their is a pending API call.
+ * @property {function} fetch - Function used to manually call a fetch method.
  * @property {setDataFunc} setData - Set the response data object.
  */
 
 /**
- * `setData` property of `useAPIOutput`
+ * `setData` property of `useAPIOutput`.
+ *
+ * Function used to overwrite the `data` object held instate.
+ *
  * @typedef {function} setDataFunc
  * @param {Object[]} newData - New data array that overwrites current data.
  */
@@ -23,13 +27,18 @@ const { CancelToken } = axios;
 /**
  * React hook used to make a an API call using axios.
  *
+ *  ```javascipt
+ *  const { data, response, error, isLoading } = useAPI(url, config, initialFetch);
+ *  ```
+ *
  * Allows you to pass an [axios config object](https://github.com/axios/axios#request-config), for complete control of the request being sent.
  *
  * @param {string} url - URL that the API call is made to.
  * @param {Object} config={} - Axios config object passed to the axios.request method.
+ * @param {boolean} initialFetch=true - Should the first api call automatically be made.
  * @returns {useAPIOutput} output
  */
-function useAPI(url, config = {}) {
+function useAPI(url, config = {}, initialFetch = true) {
   const [state, setState] = useState({
     response: undefined,
     error: undefined,
@@ -38,10 +47,9 @@ function useAPI(url, config = {}) {
 
   const configHash = hash(config);
 
-  useEffect(() => {
-    setState({ ...state, isLoading: true });
+  const source = CancelToken.source();
 
-    const source = CancelToken.source();
+  function fetch() {
     axios(url, {
       ...config,
       cancelToken: source.token
@@ -56,6 +64,14 @@ function useAPI(url, config = {}) {
           setState({ error, response: undefined, isLoading: false });
         }
       });
+  }
+
+  useEffect(() => {
+    setState({ ...state, isLoading: true });
+
+    if (initialFetch) {
+      fetch();
+    }
 
     return () => {
       source.cancel('useEffect cleanup.');
@@ -69,8 +85,9 @@ function useAPI(url, config = {}) {
     const newResponse = { ...response, data: newData };
     setState({ ...state, response: newResponse });
   }
+
   const data = response ? response.data : undefined;
-  return { data, response, error, isLoading, setData };
+  return { data, response, error, isLoading, setData, fetch };
 }
 
 export default useAPI;
