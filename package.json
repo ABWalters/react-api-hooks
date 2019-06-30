@@ -4,6 +4,7 @@
   "description": "A set of React hooks for working with APIs.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "source": "src/index.js",
   "unpkg": "dist/index.umd.js",
   "dependencies": {
     "axios": "^0.18.1",
@@ -37,8 +38,8 @@
     "dist"
   ],
   "scripts": {
-    "start": "microbundle watch src/index.js --target node",
-    "build": "microbundle src/index.js --target node",
+    "start": "microbundle watch",
+    "build": "microbundle",
     "test": "npm test",
     "docs": "node scripts/generate-reference.js"
   },
