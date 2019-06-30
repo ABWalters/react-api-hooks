@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import hash from 'hash-object';
-import { offsetPaginator, responseToData } from './utils';
+import { getOffsetPaginator, getResponseToData } from './utils';
 
 const { CancelToken } = axios;
+
+const defaultPaginator = getOffsetPaginator('offset', 40);
+const defaultResponseToData = getResponseToData(40);
 
 /**
  * Paginator function used to alter the axios config object, in order to fetch the next page.
@@ -55,8 +58,8 @@ const { CancelToken } = axios;
 function useInfAPI(
   url,
   config = {},
-  paginator = offsetPaginator,
-  responseToItems = responseToData
+  paginator = defaultPaginator,
+  responseToItems = defaultResponseToData
 ) {
   const [state, setState] = useState({
     items: [],

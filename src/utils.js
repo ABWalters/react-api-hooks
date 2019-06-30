@@ -7,21 +7,16 @@
  *
  * @param {Object} config - Axios config object
  * @param {Object} paginationState - Object kept internally to keep track of pagination
- * @param {string} offsetParamName='offset' - Param name used to send offset value to the API
- * @param {number} pageSize=40 - Increment size for offset.
+ * @param {string} offsetParamName - Param name used to send offset value to the API
+ * @param {number} pageSize - Increment size for offset.
  * @return {Object[]} output
  * @return {Object} output.updatedConfig - Config object including pagination changes
  * @return {Object} output.updatedPaginationState - Updated pagination state
  */
-export function offsetPaginator(
-  config,
-  paginationState,
-  offsetParamName = 'offset',
-  pageSize = 40
-) {
+export function offsetPaginator(config, paginationState, offsetParamName, pageSize) {
   const { params = {} } = config;
   const { offset } = paginationState;
-  const newOffset = (offset !== undefined) ? offset + pageSize : 0;
+  const newOffset = offset !== undefined ? offset + pageSize : 0;
   const updatedParams = { ...params, [offsetParamName]: newOffset };
 
   const updatedConfig = { ...config, params: updatedParams };
@@ -48,8 +43,20 @@ export function getOffsetPaginator(offsetParamName, pageSize) {
  * @return output.items {Object[]} - Items extracted from the response
  * @return output.hasMore {boolean} - Are there more items available?
  */
-export function responseToData(response) {
+export function responseToData(response, pageSize) {
   const items = response.data;
   const hasMore = items.length === pageSize;
   return [items, hasMore];
+}
+/**
+ * Generate a response to data function using a custom page size.
+ *
+ * If results.length === pageSize then it is assumed that there are more pages available.
+ * @param pageSize
+ * @return {function} responseToDataFunc
+ */
+export function getResponseToData(pageSize) {
+  return response => {
+    return responseToData(response, pageSize);
+  };
 }
