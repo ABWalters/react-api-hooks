@@ -3,7 +3,7 @@ import { useInfAPI } from 'react-api-hooks';
 import InfiniteScroll from 'react-infinite-scroller';
 import { GoogleBooksListInner } from '../../components/GoogleBooksList';
 import Error from '../../components/status/Error';
-import Loading from '../../components/status/Loading';
+import InlineLoading from '../../components/status/InlineLoading';
 import { booksInitialParams, booksURL } from '../../constants';
 import { paginator, responseToItems } from './functions';
 
@@ -29,7 +29,7 @@ const InfScrollExample = () => {
           }
         }}
         hasMore={hasMore}
-        loader={<Loading />}
+        loader={<InlineLoading />}
         useWindow={false}
       >
         <GoogleBooksListInner items={items} />
