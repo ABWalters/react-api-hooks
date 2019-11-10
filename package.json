@@ -38,7 +38,7 @@
   ],
   "scripts": {
     "start": "microbundle watch",
-    "build": "microbundle",
+    "build": "microbundle --no-compress --no-sourcemap",
     "test": "npm test",
     "docs": "node scripts/generate-reference.js"
   },
