@@ -27,8 +27,8 @@ const { CancelToken } = axios;
 /**
  * React hook used to make a an API call using axios.
  *
- *  ```javascipt
- *  const { data, response, error, isLoading } = useAPI(url, config, initialFetch);
+ *  ```
+ *  const { data, response, error, isLoading, setData, fetch } = useAPI(url, config, initialFetch);
  *  ```
  *
  * Allows you to pass an [axios config object](https://github.com/axios/axios#request-config), for complete control of the request being sent.
