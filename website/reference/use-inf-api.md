@@ -3,6 +3,10 @@
 ## useInfAPI(url, config, paginator, responseToItems) ⇒ [<code>useInfAPIOutput</code>](#useInfAPIOutput)
 React hook used by an infinite scrolling component to make API calls using axios.
 
+```
+ const { items, error, isPaging, isLoading, hasMore, setItems, fetchPage } = useAPI(url, config, initialFetch);
+ ```
+
 Allows you to pass an [axios config object](https://github.com/axios/axios#request-config), for complete control of the request being sent.
 
 By default it will paginate using a query param `offset`, and assumes that the API returns an array of items.
