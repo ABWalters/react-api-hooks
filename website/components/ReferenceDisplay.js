@@ -31,6 +31,10 @@ const MarkDownWrapper = styled.div`
   td:first-child {
     border-left: 1px solid rgba(0, 0, 0, 0.07);
   }
+
+  pre {
+    white-space: normal;
+  }
 `;
 
 const ReferenceDisplay = ({ source }) => {
