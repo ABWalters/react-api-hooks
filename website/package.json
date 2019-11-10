@@ -18,6 +18,7 @@
     "next": "^8.0.3",
     "prismjs": "^1.15.0",
     "query-string": "^6.4.0",
+    "react-api-hooks": "../react-api-hooks-0.2.2.tgz",
     "react-dom": "^16.8.4",
     "react-github-corner": "^2.3.0",
     "react-markdown": "^4.0.8",
