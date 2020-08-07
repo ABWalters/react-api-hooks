@@ -16,7 +16,7 @@
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "next": "^8.0.3",
-    "prismjs": "^1.15.0",
+    "prismjs": "^1.21.0",
     "query-string": "^6.4.0",
     "react-api-hooks": "../react-api-hooks-0.2.2.tgz",
     "react-dom": "^16.8.4",
